@@ -1,19 +1,23 @@
-namespace App;
-public class Item
+namespace App
 {
-public string Name { get; set; }
-public string Description { get; set; }
+    // Class to represent an item
+    public class Item
+    {
+        public string Name;        // Item name
+        public string Description; // Item description
 
+        // Constructor to initialize item
+        public Item(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
 
-public Item(string name, string description)
-{
-Name = name;
-Description = description;
-}
-
-
-public override string ToString()
-{
-return $"Item: {Name}, Description: {Description}";
-}
+        // Display item details
+        public void ShowItem()
+        {
+            System.Console.WriteLine("Item: " + Name);
+            System.Console.WriteLine("Description: " + Description);
+        }
+    }
 }

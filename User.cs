@@ -1,31 +1,51 @@
-namespace App;
-
-public class User
+namespace App
 {
-    
-public string Username { get; private set; }
-private string Password;
-public List<Item> Items { get; private set; }
+    using System.Collections.Generic;
 
+    // Class to represent a user
+    public class User
+    {
+        public string Username;
+        public string Password;
+        public List<Item> MyItems;        // User can have many items
+        public List<Trade> MyTrades;      // Trades involving this user
 
-public User(string username, string password)
-{
-Username = username;
-Password = password;
-Items = new List<Item>();
-}
+        // Constructor to initialize user
+        public User(string username, string password)
+        {
+            Username = username;
+            Password = password;
+            MyItems = new List<Item>();
+            MyTrades = new List<Trade>();
+        }
 
+        // Add item to user
+        public void AddItem(Item item)
+        {
+            MyItems.Add(item);
+        }
 
-// Basic login method
-public bool Login(string username, string password)
-{
-return Username == username && Password == password;
-}
+        // Display all items of user
+        public void ShowItems()
+        {
+            if (MyItems.Count == 0)
+            {
+                System.Console.WriteLine("No items available.");
+                return;
+            }
 
+            foreach (var item in MyItems)
+            {
+                item.ShowItem();
+                System.Console.WriteLine("------------------");
+            }
+        }
 
-public void AddItem(Item item)
-{
-Items.Add(item);
-}
+        // Check login credentials
+        public bool Login(string username, string password)
+        {
+            return Username == username && Password == password;
+        }
+    }
 }
 
